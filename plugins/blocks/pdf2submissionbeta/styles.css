@@ -1,0 +1,15 @@
+/* Keep assignment titles inside narrow Moodle block drawers. */
+.pdf2submissionbeta-assignment-picker,
+.pdf2submissionbeta-assignment-picker form {
+    max-width: 100%;
+}
+.pdf2submissionbeta-assignment-picker select {
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.pdf2submissionbeta-review { display:grid; grid-template-columns:minmax(0,1fr) minmax(180px,25%); gap:1.5rem; }
+.pdf2submissionbeta-nav { grid-column:2; grid-row:1; overflow-wrap:anywhere; }
+.pdf2submissionbeta-main { grid-column:1; grid-row:1; min-width:0; }
+.block_pdf2submissionbeta .mform .col-md-3, .block_pdf2submissionbeta .mform .col-md-9 { flex:0 0 100%; max-width:100%; }
+@media(max-width:700px) { .pdf2submissionbeta-review {display:block;} }

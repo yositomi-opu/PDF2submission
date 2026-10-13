@@ -1,0 +1,8 @@
+<?php
+// SPDX-License-Identifier: GPL-3.0-or-later
+defined('MOODLE_INTERNAL') || die();
+$plugin->component = 'block_pdf2submissionbeta';
+$plugin->version = 2026101001;
+$plugin->requires = 2024100700;
+$plugin->maturity = MATURITY_BETA;
+$plugin->release = '0.2.02 beta for Moodle 4.5 / PHP 8.3';
