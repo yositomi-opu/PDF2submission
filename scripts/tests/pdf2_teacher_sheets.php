@@ -5,7 +5,7 @@ define('MOODLE_INTERNAL', true);
 class assign {
     public function get_context() { return null; }
     public function get_course_module() { return (object)['id'=>7]; }
-    public function get_course() { return (object)['fullname'=>'Test course']; }
+    public function get_course() { return (object)['id'=>42,'fullname'=>'Test course']; }
     public function get_instance() { return (object)['name'=>'Test assignment']; }
 }
 class pdf {
@@ -19,10 +19,14 @@ class pdf {
     public function __call($name,$args) {}
 }
 function get_config(...$args) { return 'test-only-key'; }
-function get_enrolled_users(...$args) { return $GLOBALS['fixture']; }
+function get_enrolled_users(...$args) { return $GLOBALS['fixture'] + [90=>$GLOBALS['USER']]; }
+class context_course { public static function instance($id) { return null; } }
+function has_capability($cap,$context,$uid) { return $uid===90; }
+$DB = new class { public function get_field(...$args) { return '[1,90,2]'; } };
+require __DIR__ . '/../../plugins/blocks/pdf2submissionbeta/classes/roster.php';
 function fullname($user) { return $user->firstname . ' ' . $user->lastname; }
 function get_string(...$args) { return 'Teacher copy'; }
-require __DIR__ . '/../../plugins/blocks/pdf2submission/classes/service.php';
+require __DIR__ . '/../../plugins/blocks/pdf2submissionbeta/classes/service.php';
 $libdir = sys_get_temp_dir() . '/pdf2-stub-' . bin2hex(random_bytes(8));
 mkdir($libdir, 0700);
 file_put_contents($libdir . '/pdflib.php', '<?php // PDF recorder is defined above.');
@@ -35,15 +39,15 @@ foreach ([[2,'A10'],[1,'A2']] as [$id,$number]) {
 try {
     foreach ([false,true] as $dualenrolled) {
         if ($dualenrolled) { $fixture[90]=$USER; }
-        $pdf=\block_pdf2submission\service::sheets(new assign());
-        $expected=[\block_pdf2submission\service::code(7,1),\block_pdf2submission\service::code(7,2),
-            \block_pdf2submission\service::teacher_code(7,90)];
+        $pdf=\block_pdf2submissionbeta\service::sheets(new assign());
+        $expected=[\block_pdf2submissionbeta\service::code(7,1),\block_pdf2submissionbeta\service::teacher_code(7,90),
+            \block_pdf2submissionbeta\service::code(7,2)];
         if ($pdf->pages !== 3 || $pdf->codes !== $expected ||
-            !str_contains($pdf->headers[2], 'Test Teacher / T1 / Teacher copy')) {
+            !str_contains($pdf->headers[1], 'Test Teacher / T1 / Teacher copy')) {
             throw new Exception('Wrong page order, teacher count, identity or label');
         }
     }
-    echo "PASS: sorted student pages, current teacher last exactly once, distinct signed QR and teacher header\n";
+    echo "PASS: sorted student pages, teacher at saved CSV position exactly once, distinct signed QR and teacher header\n";
 } finally {
     unlink($libdir . '/pdflib.php');
     rmdir($libdir);

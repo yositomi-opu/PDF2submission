@@ -7,9 +7,9 @@ namespace {
         public function __construct($message, ...$args) { parent::__construct($message); }
     }
 }
-namespace block_pdf2submission {
+namespace block_pdf2submissionbeta {
     function get_config(...$args) { return 'test-only-key'; }
-    require $argv[1] ?? __DIR__ . '/../../plugins/blocks/pdf2submission/classes/service.php';
+    require $argv[1] ?? __DIR__ . '/../../plugins/blocks/pdf2submissionbeta/classes/service.php';
     function check($actual, $expected) {
         if ($actual !== $expected) { throw new \RuntimeException('Unexpected mapping: ' . json_encode($actual)); }
     }

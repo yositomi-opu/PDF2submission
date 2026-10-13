@@ -1,6 +1,6 @@
 <?php
 // SPDX-License-Identifier: GPL-3.0-or-later
-$string['pluginname'] = 'PDF2submission Beta';
+$string['pluginname'] = 'PDF2submission';
 $string['pdf2submissionbeta:addinstance'] = 'Add a paper submission block';
 $string['pdf2submissionbeta:manage'] = 'Import paper submissions on behalf of students';
 $string['manage'] = 'Print sheets / Import scanned PDF';

@@ -57,4 +57,4 @@ $dual=$students+[90=>$teacher];
 check(!isset(roster::sheet_order($participants,$dual,[],[90=>true])[90]),'unlisted dual-role teacher not automatically printed');
 $ordered=roster::sheet_order($participants,$dual,[90,1],[90=>true]);
 check(count($ordered)===4 && $ordered[90]['teacher'],'listed dual-role teacher printed once as teacher copy');
-echo "BETA LOGIC TESTS PASSED\n";
+echo "MULTI-ASSIGNMENT LOGIC TESTS PASSED\n";

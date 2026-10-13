@@ -1,8 +1,8 @@
 # PDF2submission development
 
 - Read README.md and HANDOFF.md first; inspect branch and uncommitted changes.
-- This repository is the canonical development source for both Moodle blocks.
-- Keep stable and beta components/install directories separate; retain existing QR compatibility.
+- This repository is the canonical development source for PDF2submission 1.x. The retired 0.1 line and final beta are preserved by tags and release ZIPs.
+- Keep the stable 1.x component block_pdf2submissionbeta and its install directory unchanged for in-place Beta upgrades. Never reuse the retired block_pdf2submission identity; retain existing QR compatibility.
 - Do not alter installed Moodle, user data, course data or submissions without a specific request.
 - Never commit scans, rosters, credentials, tokens, .env files, backups or private absolute paths.
 - Keep UI wording in Japanese and English. Preserve GPL and upstream attribution.

@@ -1,9 +1,0 @@
-/* Keep assignment titles inside narrow Moodle block drawers. */
-.pdf2submission-assignment-picker,
-.pdf2submission-assignment-picker form {
-    max-width: 100%;
-}
-.pdf2submission-assignment-picker select {
-    max-width: 100%;
-    text-overflow: ellipsis;
-}

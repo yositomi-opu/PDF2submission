@@ -1,6 +1,6 @@
 <?php
 // SPDX-License-Identifier: GPL-3.0-or-later
-$string['pluginname'] = 'PDF2submission Beta';
+$string['pluginname'] = 'PDF2submission';
 $string['pdf2submissionbeta:addinstance'] = '紙の答案取込ブロックを追加する';
 $string['pdf2submissionbeta:manage'] = '学生に代わって紙の答案を課題へ登録する';
 $string['manage'] = '用紙の印刷・スキャンPDFの取込';

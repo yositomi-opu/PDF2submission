@@ -1,8 +1,0 @@
-Modernized paper-to-assignment workflow inspired by:
-Toshihiro KITA, pdf2submission
-https://github.com/kita-toshihiro/pdf2submission
-
-This implementation uses current Moodle assignment APIs and a new signed QR format.
-It is not an upstream release or an endorsement by the original author.
-License: GNU General Public License, version 3 or later.
-Moodle/TCPDF, Ghostscript, ZBar and pypdf retain their own licenses.

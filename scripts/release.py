@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
-BLOCKS = ("pdf2submission", "pdf2submissionbeta")
+BLOCKS = ("pdf2submissionbeta",)
 TESTS = ("pdf2_limits.php", "pdf2_page_groups.php", "pdf2_teacher_sheets.php", "pdf2_student_order.php", "pdf2_beta.php")
 
 def files(block):

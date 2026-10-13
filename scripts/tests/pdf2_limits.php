@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 define('MOODLE_INTERNAL', true);
 class moodle_exception extends Exception { public function __construct($code, $component) { parent::__construct($code); } }
-require __DIR__ . '/../../plugins/blocks/pdf2submission/classes/service.php';
-use block_pdf2submission\service;
+require __DIR__ . '/../../plugins/blocks/pdf2submissionbeta/classes/service.php';
+use block_pdf2submissionbeta\service;
 $f=tempnam(sys_get_temp_dir(), 'pdf-limit-');
 try {
  foreach ([24*1024*1024, 60*1024*1024, service::MAX_UPLOAD_BYTES, service::MAX_UPLOAD_BYTES+1] as $size) {
