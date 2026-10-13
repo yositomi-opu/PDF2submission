@@ -109,18 +109,21 @@ class service {
             $student = $entry['user'];
             $isteacher = $entry['teacher'];
             $pdf->AddPage();
-            // Compact header for overlaying an existing worksheet (25 / 36 = 69%).
+            // Enlarge QR modules while keeping the header bottom at 35 mm.
             $pdf->SetDrawColor(0, 0, 0);
             $pdf->SetLineWidth(0.2);
-            $pdf->Rect(12, 10, 25, 25);
+            $pdf->Rect(12, 5, 30, 30);
             $code = $isteacher ? self::teacher_code($assignment->get_course_module()->id, $student->id)
                 : self::code($assignment->get_course_module()->id, $student->id);
             $pdf->write2DBarcode($code,
-                'QRCODE,H', 12, 10, 25, 25, ['border' => 0, 'padding' => 2], 'N');
+                'QRCODE,H', 12, 5, 30, 30, ['border' => 0, 'padding' => 2], 'N');
             $name = trim(preg_replace('/[\\s\\x{3000}]+/u', ' ', fullname($student)));
-            $pdf->SetXY(43, 10);
+            // 11 pt text with 8 pt extra leading (19 pt baseline spacing).
+            $pdf->setCellHeightRatio(19 / 11);
+            // Font/line-box inset places visible text about 8 pt below the QR frame.
+            $pdf->SetXY(48, 5 + 3 * 25.4 / 72);
             // MultiCell defaults to justification, which stretches spaces in names.
-            $pdf->MultiCell(155, 7, $assignment->get_course()->fullname . "\n" .
+            $pdf->MultiCell(150, 7, $assignment->get_course()->fullname . "\n" .
                 $assignment->get_instance()->name . "\n" . $name .
                 (!empty($student->idnumber) ? ' / ' . $student->idnumber : '') .
                 ($isteacher ? ' / ' . get_string('teachercopy', 'block_pdf2submissionbeta') : ''), 0, 'L');

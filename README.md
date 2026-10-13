@@ -6,8 +6,8 @@ Mac専用ではなく、対応するMoodleサーバーへインストールで�
 
 | 版 | Moodleコンポーネント | 現在のリリース | 案内 |
 | --- | --- | --- | --- |
-| 現行版 | block_pdf2submission | 0.1.10 | [利用方法](plugins/blocks/pdf2submission/README.md) |
-| ベータ版 | block_pdf2submissionbeta | 0.2.02 | [利用方法](plugins/blocks/pdf2submissionbeta/README.md) |
+| 現行版 | block_pdf2submission | 0.1.11 | [利用方法](plugins/blocks/pdf2submission/README.md) |
+| ベータ版 | block_pdf2submissionbeta | 0.2.03 | [利用方法](plugins/blocks/pdf2submissionbeta/README.md) |
 
 両版は別ブロックとして共存できます。ベータ版は順序指定CSVの保存、ブロックからのQR生成、
 複数課題のスキャン振り分けに対応します。教員用紙はCSVに指定した位置でのみ印刷します。
@@ -21,7 +21,7 @@ make check
 make package
 ```
 
-`dist/pdf2submission-0.1.10.zip` と `dist/pdf2submissionbeta-0.2.02.zip` を生成します。
+`dist/pdf2submission-0.1.11.zip` と `dist/pdf2submissionbeta-0.2.03.zip` を生成します。
 Moodleのプラグインインストール画面から目的のZIPを選んで追加・更新してください。
 既存サイトを更新する前に通常のMoodleバックアップを取得してください。
 これらのコマンドはMoodleを起動したり、既存サイトへインストールしたりしません。
