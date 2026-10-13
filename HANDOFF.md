@@ -30,6 +30,8 @@
 
 ## 次の作業
 
-- 専用チャットはこのリポジトリを開発対象にする。
+- 専用チャットの自動作成はアプリが「Projectless thread directory must be a real directory」を返して失敗。
+  ユーザーがこのフォルダをCodexのプロジェクトとして開き、新規チャット「PDF2submission 開発」を作る必要がある。
+  引き継ぎはAGENTS.mdとこのファイルから開始する。
 - GitHubリポジトリはまだ作成していない。公開する場合は空のPDF2submissionリポジトリを作成し、初期コミットをpushする。
 - 今回は機能変更や稼働Moodleへの更新を行わない。将来の変更はここで検証してZIP化し、必要な環境だけ更新する。
