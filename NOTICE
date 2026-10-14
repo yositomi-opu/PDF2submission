@@ -1,8 +1,41 @@
-Modernized paper-to-assignment workflow inspired by:
-Toshihiro KITA, pdf2submission
-https://github.com/kita-toshihiro/pdf2submission
+PDF2submission — provenance and modification notice
 
-This implementation uses current Moodle assignment APIs and a new signed QR format.
-It is not an upstream release or an endorsement by the original author.
-License: GNU General Public License, version 3 or later.
-Moodle/TCPDF, Ghostscript, ZBar and pypdf retain their own licenses.
+Original workflow / 元の着想・ワークフロー:
+Toshihiro KITA (喜多敏博), pdf2submission
+https://github.com/kita-toshihiro/pdf2submission
+The original project's main source files identify Toshihiro KITA as the author
+and state GNU GPL version 3 or later.
+
+Reimplementation and maintenance / 再実装・変更の主体:
+The yositomi-opu/PDF2submission project
+https://github.com/yositomi-opu/PDF2submission
+
+Changes / 変更内容:
+This project reimplements the paper-to-assignment workflow using current Moodle
+assignment APIs and signed QR codes. Changes include CSV-based sheet ordering,
+multi-assignment scan processing, teacher-sheet exclusion, permission checks,
+and revised QR size and page layout. The original FPDI library is not bundled.
+現行Moodle APIと署名付きQRで再実装し、CSVによる印刷順序、複数課題の振り分け、
+教員用紙の除外、権限確認、QRサイズと用紙レイアウトの変更を加えています。
+元実装に含まれるFPDIライブラリは同梱していません。
+
+Relevant dates / 関連する変更日:
+2026-10-13: Independent repository and stable 1.0.0 release based on Beta 0.2.03.
+2026-10-14: Expanded this notice; documented Moodle 5.2.4 integration validation
+            performed on 2026-10-13. No runtime changes in this documentation update.
+2026-10-13: 独立リポジトリと、Beta 0.2.03に基づく正式版1.0.0。
+2026-10-14: 本表示を補足し、前日のMoodle 5.2.4統合検証結果を記録。
+            今回は表示・文書の更新のみで、実行処理の変更はありません。
+
+This is not an upstream release or an endorsement by the original author.
+本プロジェクトの正式版であり、元作者による公式リリース・承認を示すものではありません。
+
+License / ライセンス:
+GNU General Public License, version 3 or later (GPL-3.0-or-later).
+See the accompanying COPYING.txt for the full license and warranty disclaimer.
+ライセンス全文と無保証の条件は、同梱のCOPYING.txtを参照してください。
+
+Moodle/TCPDF, Ghostscript, ZBar, pypdf and GNU coreutils (timeout) retain their own
+licenses. Their implementations and font files are not included in this plugin ZIP.
+外部依存ソフトウェアにはそれぞれのライセンスが適用されます。
+それらの実装本体やフォントファイルは、このプラグインZIPには同梱していません。
