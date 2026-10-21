@@ -22,9 +22,19 @@ class provider implements \core_privacy\local\metadata\provider,
     private static function delete_orders(array $ids): void {
         global $DB;
         foreach (self::orders() as $record) {
-            if (array_intersect($ids,self::order_users($record))) {
-                $DB->delete_records('block_pdf2subbeta_order',['id'=>$record->id]);
-            }
+            if (!array_intersect($ids, self::order_users($record))) { continue; }
+            // Serialize with CSV uploads and re-read so erasure cannot restore stale ordering.
+            $lock = \core\lock\lock_config::get_lock_factory('block_pdf2submissionbeta')->get_lock('order_'.$record->courseid, 10);
+            if (!$lock) { throw new \moodle_exception('busy', 'block_pdf2submissionbeta'); }
+            try {
+                $current = $DB->get_record('block_pdf2subbeta_order', ['id'=>$record->id]);
+                if (!$current) { continue; }
+                $remaining = array_values(array_diff(json_decode($current->userids, true) ?: [], $ids));
+                $current->userids = json_encode($remaining);
+                if (in_array((int)$current->ownerid, $ids)) { $current->ownerid = 0; }
+                $current->timemodified = time();
+                $DB->update_record('block_pdf2subbeta_order', $current);
+            } finally { $lock->release(); }
         }
     }
     private static function batches(): array {
